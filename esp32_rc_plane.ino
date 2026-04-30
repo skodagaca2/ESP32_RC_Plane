@@ -1,7 +1,7 @@
 #include <WiFi.h>
 #include <ESPAsyncWebServer.h>
 #include <AsyncTCP.h>
-#include <Servo.h>
+#include <ESP32Servo.h>
 
 #define SERVO_L_PIN 18
 #define SERVO_R_PIN 19
@@ -30,7 +30,7 @@ String getWebPage() {
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset=\"UTF-8\">
+  <meta charset="UTF-8">
   <title>ESP32 RC Plane Controller</title>
   <style>
     body { font-family: Arial; text-align:center; margin:20px; }
@@ -41,13 +41,13 @@ String getWebPage() {
 </head>
 <body>
   <h2>ESP32 RC Plane Controller</h2>
-  <div id=\"joystickContainer\">
-    <div id=\"joystick\"></div>
+  <div id="joystickContainer">
+    <div id="joystick"></div>
   </div>
   <br>
   <label>Throttle:</label><br>
-  <input type=\"range\" min=\"0\" max=\"180\" value=\"0\" id=\"slider\"/>
-  <span id=\"throttle_val\">0</span>
+  <input type="range" min="0" max="180" value="0" id="slider"/>
+  <span id="throttle_val">0</span>
   <script>
     const ws = new WebSocket('ws://' + location.host + '/ws');
     let joy = document.getElementById("joystick");
